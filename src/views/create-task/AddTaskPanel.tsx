@@ -17,7 +17,7 @@ const AddTaskPanel = (props: {addTask: (data: any) => void}) => {
     }
 
     return (
-        <div>
+        <div className="fixed bottom-0 left-0 w-full">
             <Button title="Add task" icon="PlusIcon" onClick={handleClick} />
             <Dialog onSave={(data) => saveTask(data)} onEscape={closeDialog} showDialog={showDialog} />
         </div>

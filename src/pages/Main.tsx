@@ -65,14 +65,12 @@ const MainPage = () => {
         updateTasks(() => filterByDate(date));
     }
     return (
-        <div className="flex flex-col h-screen max-w-md mx-auto">
-            <div className="flex-1 overflow-y-auto p-8">
+        <div className="flex flex-col h-screen max-w-md mx-auto relative">
+            <div className="flex-1 overflow-y-auto p-8 pb-20">
                 <Days days={days} dayClick={handleDayChange} />
                 <Tasks items={tasks} change={handleTaskChange} />
             </div>
-            <div>
-                <AddTaskPanel addTask={addTask} />
-            </div>
+            <AddTaskPanel addTask={addTask} />
         </div>
     )
 }
