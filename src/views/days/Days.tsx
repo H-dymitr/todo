@@ -1,16 +1,14 @@
-import {DayModel} from "./day.model";
 import Day from "./Day";
+import {CurrentDays} from "../../state/current-days";
 
-const Days = (props: {days: DayModel[], dayClick: (id: number) => void}) => {
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - 1)
-    const daysList = props.days.map((date, i) => {
+const Days = (props: { selectedDay: string, dayClick: (date: string) => void }) => {
+    const daysList = CurrentDays?.map((date, i) => {
         return (
             <li key={i}>
                 <Day
-                    active={date.active ?? (i === 0)}
-                    date={date.data}
-                    click={() => props.dayClick(i)}
+                    active={date === props.selectedDay}
+                    date={date}
+                    click={() => props.dayClick(date)}
                 />
             </li>
         )

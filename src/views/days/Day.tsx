@@ -1,6 +1,6 @@
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function Day(props: {date: string, active?: boolean, click: () => void}) {
+function Day(props: { date: string, active?: boolean, click: () => void }) {
     const active = props.active ? 'bg-accent text-white' : 'bg-card';
     const date = new Date(props.date);
     const day = date.getDate();

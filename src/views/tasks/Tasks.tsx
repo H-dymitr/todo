@@ -1,13 +1,31 @@
 import {TaskModel} from "./task.model";
 import {SyntheticEvent} from "react";
 import Task from "./Task";
+import {useDispatch, useSelector} from "react-redux";
+import {taskUpdated} from "../../state/tasks-slice";
 
-const Tasks = (props: {items: TaskModel[], change: (id: string, ev: SyntheticEvent<{checked: boolean}>) => void}) => {
-    const productList = props.items.map((task) => {
+const Tasks = (props: { selectedDay: string }) => {
+    const tasks: TaskModel[] = useSelector((state: any) => state.tasks)
+        .filter((task: TaskModel) => {
+            return task.date.split('T')[0] === props.selectedDay.split('T')[0]
+        });
+
+    const dispatch = useDispatch();
+
+    const handleTaskChange = (id: string, ev: SyntheticEvent<{ checked: boolean }>) => {
+        const isDone = ev.currentTarget.checked;
+        dispatch(
+            taskUpdated({
+                id,
+                isDone,
+            })
+        )
+    }
+    const productList = tasks.map((task) => {
         return (
             <li key={task.id}>
                 <Task
-                    change={props.change}
+                    change={handleTaskChange}
                     isDone={task.isDone}
                     title={task.title}
                     id={task.id}/>

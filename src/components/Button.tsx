@@ -1,7 +1,7 @@
 import DynamicHeroIcon from "./HeroicIcon";
 
-const Button = (props: {title: string, icon?: string, onClick?: () => void, type?: 'submit' | undefined}) => {
-    const iconEl = props.icon ? <DynamicHeroIcon icon={(props.icon as string)} /> : null
+const Button = (props: { title: string, icon?: string, onClick?: () => void, type?: 'submit' | undefined }) => {
+    const iconEl = props.icon ? <DynamicHeroIcon icon={(props.icon as string)}/> : null
     return (
         <button
             type={props.type}
